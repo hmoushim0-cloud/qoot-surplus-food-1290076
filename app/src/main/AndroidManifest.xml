@@ -10,7 +10,7 @@
 
     <application
         android:allowBackup="true"
-        android:label="تطبيق قوت الطازج — تصميم داخلي لبيت — أرغب في ت"
+        android:label="قوت لحفظ النعمة وإدارة المطابخ السحابية - Qoot Surplus Food"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.DeviceDefault.NoActionBar">
         <activity

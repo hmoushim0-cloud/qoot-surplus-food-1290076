@@ -26,7 +26,8 @@ fun HomeScreen(
     viewModel: QootSurplusViewModel,
     onItemClick: (QootSurplusItem) -> Unit
 ) {
-    val categories = listOf("الكل", "الخدمات الرئيسية", "المراقبة الحية", "التقارير الضريبية", "الإعدادات")
+    val categories = listOf("الكل", "وجبات جاهزة", "فائض المخابز", "سلال الإنقاذ", "ألبان ومبردات")
+    val defaultPeripheral = "Kitchen Display System (KDS) TCP/IP Print Server"
 
     Column(
         modifier = Modifier
@@ -36,8 +37,8 @@ fun HomeScreen(
     ) {
         // Header
         Column {
-            Text("تطبيق قوت الطازج — تصميم داخلي لبيت — أرغب في ت", fontSize = 22.sp, fontWeight = FontWeight.Black, color = BrandTextPrimary)
-            Text("منظومة food المتكاملة مع ربط Kitchen Display System (KDS) TCP/IP Print Server", fontSize = 12.sp, color = BrandTextSecondary)
+            Text("قوت لحفظ النعمة وإدارة المطابخ السحابية", fontSize = 22.sp, fontWeight = FontWeight.Black, color = BrandTextPrimary)
+            Text("منظومة إدارة المطابخ السحابية وحفظ فائض الأطعمة مع ربط KDS Print Server", fontSize = 12.sp, color = BrandTextSecondary)
         }
 
         // Hardware Status Capsule
@@ -52,8 +53,9 @@ fun HomeScreen(
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Column(modifier = Modifier.weight(1f)) {
-                    Text("العتاد الحي: ${state.telemetry?.peripheralName ?: 'Kitchen Display System (KDS) TCP/IP Print Server'}", fontWeight = FontWeight.Bold, color = BrandPrimary, fontSize = 13.sp)
-                    Text(state.telemetry?.liveReading ?: "Kitchen Display System (KDS) TCP/IP Print Server: ONLINE | READY", fontSize = 11.sp, color = BrandTextSecondary)
+                    val peripheralLabel = state.telemetry?.peripheralName ?: defaultPeripheral
+                    Text("العتاد الحي: $peripheralLabel", fontWeight = FontWeight.Bold, color = BrandPrimary, fontSize = 13.sp)
+                    Text(state.telemetry?.liveReading ?: "$defaultPeripheral: ONLINE | READY", fontSize = 11.sp, color = BrandTextSecondary)
                 }
                 Badge(containerColor = BrandPrimary) {
                     Text(state.telemetry?.status ?: "ONLINE", color = Color.Black, fontWeight = FontWeight.Bold, modifier = Modifier.padding(2.dp))
